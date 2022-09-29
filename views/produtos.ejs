@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <style>
+        table {
+            border-collapse: collapse; /* CSS2 */
+            background: #FFFFF0;
+        }
+
+        table, td {
+            border: 1px solid black;
+            padding: 20px;
+        }
+ 
+        table, tr {
+            border: 1px solid black;
+            background: #F0FFF0;
+            margin: 15px;
+        }
+        .headTabela{
+            background: #acacac;
+        }
+        </style>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p><%= message %></p>
+    <a class="button" href="http://localhost:<%=port%>/home"><button>Home</button></a>
+    <a class="button" href="http://localhost:<%=port%>/categorias"><button>Categorias</button></a>
+    <a class="button" href="http://localhost:<%=port%>/produtos"><button>Produtos</button></a>
+    </br>
+    </br>
+    <table class="comBordaSimples">
+        <tr class="headTabela">
+            <td>
+                ID
+            </td>
+            <td>
+                Categorias
+            </td>
+            <td>
+                Nome
+            </td>
+            <td>
+                Descrisão
+            </td>
+            <td>
+                Preço
+            </td>
+            <td>
+                Configurações
+            </td>
+        </tr>
+        <% for(var i=0; i<produtos.length; i++) {%>
+            <tr> 
+                <td>
+                    <%= produtos[i].id %>
+                </td>
+                <td>
+                    <%= produtos[i].categoria %>
+                </td>
+                <td>
+                    <%= produtos[i].nome %>
+                </td>
+                <td>
+                    <%= produtos[i].descrição %>
+                </td>
+                <td>
+                    <%= produtos[i].valor %>
+                </td>
+                <td>
+                    <a class="button" href="http://localhost:<%=port%>/editar-produtos?id=<%= produtos[i].id %>"><button>Editar</button></a>
+                </td>
+            </tr>
+        <% } %>
+    </table>
+    <% console.log(produtos.length) %>
+    <a class="button" href="http://localhost:<%=port%>/cadastro-produtos"><button>Cadastrar Produtos</button></a>
+</body>
+</html>
